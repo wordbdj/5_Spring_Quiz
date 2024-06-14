@@ -11,7 +11,7 @@ import com.quiz.lesson02.domain.Store;
 
 @RestController
 public class Lesson02Quiz01RestController { // String bean 등록
- 
+
 	@Autowired
 	public StoreBO storeBO;
 	
