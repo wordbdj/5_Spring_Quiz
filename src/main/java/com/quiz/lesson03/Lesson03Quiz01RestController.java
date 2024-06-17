@@ -27,13 +27,13 @@ public class Lesson03Quiz01RestController {
 	@RequestMapping("/2")
 	public List<RealEstate> quiz01_2(
 			@RequestParam("rent_price") int rentPrice) {
-		return realEstateBO.getRealEstateByRentPrice(rentPrice);	
+		return realEstateBO.getRealEstateListByRentPrice(rentPrice);	
 	}
 	
 	@RequestMapping("/3")
 	public List<RealEstate> quiz01_3 (
 			@RequestParam("area") int area, 
-			@RequestParam("price") int price) {
-		return realEstateBO.getRealEstateByAreaAndPrice(area, price);
+			@RequestParam(value = "price", required = true) int price) {
+		return realEstateBO.getRealEstatListeByAreaPrice(area, price);
 	}
 }
