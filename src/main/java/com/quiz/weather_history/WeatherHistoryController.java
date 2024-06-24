@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class WeatherHistoryController {
 	
-	@GetMapping("")
-	public String addStudentView() {
+	@GetMapping("/weather-list-view")
+	public String weatherView() {
 		
-		return "weather_history/addWeather.html";
+		return "weather_history/weatherList";
 	}
 	
-	
+	@GetMapping("add-weather-view")
+	public String addWeatherview() {
+		
+		return "weather_history/addWeather";
+	}
 
 }
