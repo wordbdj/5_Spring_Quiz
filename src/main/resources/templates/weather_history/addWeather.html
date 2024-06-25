@@ -1,20 +1,118 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
     <meta charset="utf-8">
-    <title></title>
+    <title>날씨 입력</title>
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="/CSS/weather-history.css"> 
+   
+    <!-- jQuery가 datepicker 라이브러리 위에 있어야 한다. (데이터피커가 jquery를 사용하기 때문) -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>        
+	
+	<!-- datepicker 라이브러리 -->
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+	$(function() {	
+		$('#datePicker').datepicker({
+		    format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
+
+		    
+		});//datepicker end
+	});//ready end
+</script>
+    <link rel="stylesheet" type="text/css" href="/css/weather-history.css">
 </head>
 <body>
 	<div id="wrap">
-		<header></header>
-		<div class=".content">
-			
+		<div class="contents d-flex">
+			<!-- 메뉴 영역 -->
+			<nav class="col-2">
+				<!-- 상단 로고 -->
+				<div class="logo d-flex justify-content-center mt-3">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Emblem_of_the_Government_of_the_Republic_of_Korea.svg/800px-Emblem_of_the_Government_of_the_Republic_of_Korea.svg.png" width="25">
+					<span class="text-white font-weight-bold ml-2">기상청</span>
+				</div>
+
+				<!-- 메뉴 -->
+				<!-- flex-column: 세로 메뉴 -->
+				<ul class="nav flex-column mt-4">
+					<li class="nav-item">
+						<a href="/weather-history/weather-list-view" class="nav-link menu-font">날씨</a>
+					</li>
+					<li class="nav-item">
+						<a href="/weather-history/add-weather-view" class="nav-link menu-font">날씨입력</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link menu-font">테마날씨</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link menu-font">관측 기후</a>
+					</li>
+				</ul>
+			</nav>
+
+			<!-- 날씨 입력 -->
+			<section class="weather-history col-10 mt-3 ml-5">
+				<h3>날씨 입력</h3>
+				<form id="weather" method="post" action="/weather-history/weather-list" class="mt-5 d-flex flex-wrap">
+					<div class="form-group d-flex">
+						<label for="date" class="mr-3">날짜</label>
+						<input type="text" id="datepicker" name="date" class="form-control mr-3">
+					</div>
+					<div class="form-group d-flex">
+						<label for="weather" class="mr-3">날씨</label>
+						<select type="select" id="weather" name="weather" class="form-control custom-select mr-3">
+							<option selected>맑음</option>
+							<option>비</option>
+							<option>흐림</option>
+							<option>구름조금</option>
+						</select>
+					</div>
+					<div class="form-group d-flex">
+						<label for="microDust" class="mr-3">미세먼지</label>
+						<select type="select" id="microDust" name="microDust" class="form-control mr-3">
+							<option selected>좋음</option>
+							<option>보통</option>
+							<option>나쁨</option>
+							<option>최악</option>
+						</select>
+					</div>
+					<div class="form-group d-flex">
+						<label for="temperatures" class="mr-3">기온</label>
+						<input type="text" id="temperatures" name="temperatures" class="form-control mr-3">
+					</div>
+					<div class="form-group d-flex">
+						<label for="precipitation" class="mr-3">강우량</label>
+						<input type="text" id="precipitation" name="precipitation" class="form-control mr-3">
+					</div>
+					<div class="form-group d-flex">
+						<label for="windSpeed" class="mr-3">풍속</label>
+						<input type="text" id="windSpeed" name="windSpeed" class="form-control mr-3">
+					</div>
+				</form>
+				
+				<input type="submit" value="저장" form="weather" class="btn btn-success d-flex justify-content-end">
+			</section>
 		</div>
-	 </div>
+		<footer class="d-flex align-items-center">
+			<div class="footer-logo ml-4">
+				<img class="foot-logo-image" src="https://www.weather.go.kr/w/resources/image/foot_logo.png" width="120">
+			</div>
+			<div class="copyright ml-4">
+				<small class="text-secondary"> 
+					(07062) 서울시 동작구 여의대방로16길 61 <br>
+					Copyright@20XX KMA. All Rights RESERVED.
+				</small>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>
 </body>
 </html>
