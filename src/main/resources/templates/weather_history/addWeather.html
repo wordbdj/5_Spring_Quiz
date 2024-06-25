@@ -11,21 +11,17 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
    
-    <!-- jQuery가 datepicker 라이브러리 위에 있어야 한다. (데이터피커가 jquery를 사용하기 때문) -->
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>        
-	
 	<!-- datepicker 라이브러리 -->
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
-	$(function() {	
-		$('#datePicker').datepicker({
-		    format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
-
-		    
-		});//datepicker end
-	});//ready end
-</script>
+	$(function() {
+		$('#datepicker').datepicker({
+			dateFormat: 'yy-mm-dd' 
+		});
+	});
+	
+	</script>
     <link rel="stylesheet" type="text/css" href="/css/weather-history.css">
 </head>
 <body>
@@ -61,11 +57,11 @@
 			<section class="weather-history col-10 mt-3 ml-5">
 				<h3>날씨 입력</h3>
 				<form id="weather" method="post" action="/weather-history/weather-list" class="mt-5 d-flex flex-wrap">
-					<div class="form-group d-flex">
+					<div class="form-group d-flex input-group col-3 mr-3">
 						<label for="date" class="mr-3">날짜</label>
 						<input type="text" id="datepicker" name="date" class="form-control mr-3">
 					</div>
-					<div class="form-group d-flex">
+					<div class="form-group d-flex input-group col-4 mr-3">
 						<label for="weather" class="mr-3">날씨</label>
 						<select type="select" id="weather" name="weather" class="form-control custom-select mr-3">
 							<option selected>맑음</option>
@@ -74,7 +70,7 @@
 							<option>구름조금</option>
 						</select>
 					</div>
-					<div class="form-group d-flex">
+					<div class="form-group d-flex input-group mr-3 col-4">
 						<label for="microDust" class="mr-3">미세먼지</label>
 						<select type="select" id="microDust" name="microDust" class="form-control mr-3">
 							<option selected>좋음</option>
@@ -83,21 +79,31 @@
 							<option>최악</option>
 						</select>
 					</div>
-					<div class="form-group d-flex">
+					<div class="form-group d-flex input-group col-3 mr-3">
 						<label for="temperatures" class="mr-3">기온</label>
-						<input type="text" id="temperatures" name="temperatures" class="form-control mr-3">
+						<input type="text" id="temperatures" name="temperatures" class="form-control ">
+						<div class="input-group-append">
+						   <span class="input-group-text">°C</span>
+						 </div>
 					</div>
-					<div class="form-group d-flex">
+					<div class="form-group d-flex input-group col-4 mr-3">
 						<label for="precipitation" class="mr-3">강우량</label>
-						<input type="text" id="precipitation" name="precipitation" class="form-control mr-3">
+						<input type="text" id="precipitation" name="precipitation" class="form-control">
+						<div class="input-group-append">
+						   <span class="input-group-text">mm</span>
+						 </div>
 					</div>
-					<div class="form-group d-flex">
+					<div class="form-group d-flex input-group col-4 mr-3">
 						<label for="windSpeed" class="mr-3">풍속</label>
-						<input type="text" id="windSpeed" name="windSpeed" class="form-control mr-3">
+						<input type="text" id="windSpeed" name="windSpeed" class="form-control">
+						<div class="input-group-append mr-3">
+						   <span class="input-group-text">km/h</span>
+						</div>
 					</div>
 				</form>
-				
-				<input type="submit" value="저장" form="weather" class="btn btn-success d-flex justify-content-end">
+				<div class="d-flex justify-content-end">
+					<input type="submit" value="저장" form="weather" class="btn btn-success ">
+				</div>
 			</section>
 		</div>
 		<footer class="d-flex align-items-center">
