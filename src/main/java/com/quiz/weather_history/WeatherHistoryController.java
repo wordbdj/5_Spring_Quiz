@@ -51,12 +51,16 @@ public class WeatherHistoryController {
 		// DB insert => 
 		weatherHistoryBO.addWeather(weatherHistory);
 		
-		// DB에서 Weather_History 받기
-		List<WeatherHistory> weatherList =  weatherHistoryBO.getWeatherHistory();
+//		// DB에서 Weather_History 받기
+//		List<WeatherHistory> weatherList =  weatherHistoryBO.getWeatherHistory();
+//		
+//		//Model에 저장
+//		model.addAttribute("weatherList", weatherList);
 		
-		//Model에 저장
-		model.addAttribute("weatherList", weatherList);
+		return"redirect:/weather-history/weather-list-view";
 		
-		return"weather_history/weatherList";
+		// redirect => 날씨 목록
+		
+		
 	}
 }
