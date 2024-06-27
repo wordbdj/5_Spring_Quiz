@@ -23,13 +23,13 @@
 			</thead>
 			<tbody id="bookmarkBody">
 				<tr th:each="bookmark : ${bookmarkList}">
-					<td th:text="${bookmark.id}" id="${bookmark.id}">No</td>
+					<td th:text="${bookmark.id}">No</td>
 					<td th:text="${bookmark.name}">제목</td>
 					<td>			
 						<a th:href="${bookmark.url}" th:text="${bookmark.url}"></a>
 					</td>
 					<td>
-						<input type="button" class="deleteBtn btn btn-danger" value="삭제">
+						<button type="button" class="deleteBtn btn btn-danger" th:text="${bookmark.id}" th:value="${bookmark.id}">삭제</button>
 					</td>
 				</tr>
 			</tbody>
@@ -41,8 +41,8 @@
 			$(".deleteBtn").on('click', function(){
 				
 				// alert();
-				alert(("${bookmark.id}"))
-				let id = $("#bookmarkBody");
+				alert((".deleteBtn"))
+				let id = $(".deleteBtn").val();
 				console.log(id)
 				
 				
