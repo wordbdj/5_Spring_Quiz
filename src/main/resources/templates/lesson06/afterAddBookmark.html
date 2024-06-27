@@ -18,18 +18,39 @@
 					<th>No</th>
 					<th>제목</th>
 					<th>주소</th>
+					<th></th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="bookmarkBody">
 				<tr th:each="bookmark : ${bookmarkList}">
 					<td th:text="${bookmark.id}">No</td>
 					<td th:text="${bookmark.name}">제목</td>
 					<td>			
 						<a th:href="${bookmark.url}" th:text="${bookmark.url}"></a>
 					</td>
+					<td>
+						<input type="button" class="deleteBtn btn btn-danger" value="삭제">
+					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
+	<script>
+		$(document).ready(function(){
+			
+			$(".deleteBtn").on('click', function(){
+				
+				// alert();
+				
+				alert(("${bookmark.id}"))
+				
+				
+				
+			});
+			
+		});
+	
+	</script>
+	
 </body>
 </html>

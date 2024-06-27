@@ -30,4 +30,21 @@
 		
  	</select>
  	
+ 	<select id="isDuplicationByUrl" parameterType="string" resultType="boolean">
+ 	SELECT
+ 		COUNT(*)
+ 	FROM
+ 		`bookmark`
+ 	WHERE
+ 		`url` = #{url}
+ 	</select>
+ 	
+ 	<delete id="deleteById" parameterType="int">
+ 		DELETE
+ 		FROM
+ 			`bookmark`
+ 		WHERE
+ 			`id`= #{id}
+ 	</delete>
+ 	
  </mapper>

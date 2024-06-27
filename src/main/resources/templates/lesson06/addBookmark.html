@@ -102,6 +102,27 @@
 				return;
 			}
 			
+			// AJAX 중복 확인 
+			$.ajax({
+				// request
+				
+				type:"GET"
+				,url:"/lesson06/is-duplication-url"
+				,data:{"url":url}
+				
+				// response
+				, success:function(data){
+					if (data.isDuplication) {
+						$("#urlCheckArea").append('<span class="text-danger">중복된 url입니다.</span>');
+					} else {
+						$("#urlCheckArea").append('<span class="text-success">저장 가능한 url 입니다.</span>');
+					}
+				}
+				,error:function(error) {
+					alert(error)
+				}
+				
+			});
 			
 			
 		});

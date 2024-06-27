@@ -51,6 +51,39 @@ public class Lesson06Controller {
 		return result;
 	}
 	
+	// AJAX가 하는 요청 - url 중복확인
+	@ResponseBody
+	@GetMapping("/is-duplication-url")
+	public Map<String, Object> isDuplicationUrl(
+			@RequestParam("url")String url) {
+		
+		// DB select
+		boolean isDuplication = bookmarkBO.isDuplicationByUrl(url);
+		
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 200);
+		result.put("isDuplication", isDuplication);
+		
+		return result;
+	}
+	
+	// AJAX 가 하는 요청 - delete by id
+	@ResponseBody
+	@GetMapping("/delete-by-id")
+	public Map<String, Object> deleteById(int id) {
+		
+		// DB delete
+		bookmarkBO.deleteById(id);
+		
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 200);
+		
+		return result;
+		
+		
+	}
+	
+	
 	// http://localhost:8080/lesson06/after-add-bookmark-view
 	@GetMapping("/after-add-bookmark-view")
 	public String afterAddBookmarkView(Model model) {
