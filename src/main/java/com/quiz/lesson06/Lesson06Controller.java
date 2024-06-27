@@ -70,7 +70,9 @@ public class Lesson06Controller {
 	// AJAX 가 하는 요청 - delete by id
 	@ResponseBody
 	@GetMapping("/delete-by-id")
-	public Map<String, Object> deleteById(int id) {
+	public Map<String, Object> deleteById(
+			@RequestParam("id") int id) {
+		
 		
 		// DB delete
 		bookmarkBO.deleteById(id);

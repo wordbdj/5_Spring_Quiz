@@ -41,9 +41,27 @@
 			$(".deleteBtn").on('click', function(){
 				
 				// alert();
-				alert((".deleteBtn"))
-				let id = $(".deleteBtn").val();
+				
+				let id = $(this).val();
 				console.log(id)
+				
+				$.ajax({
+				
+					// request
+					type:"GET"
+					, url:"/lesson06/delete-by-id"
+					, data:{"id": id}
+					
+					// response
+					,success:function(data) {
+						if (data.code == 200) {
+							location.href = "/lesson06/after-add-bookmark-view"
+						}
+					}
+					, error : function(error) {
+						alert(error)
+					}
+				});
 				
 				
 			});
