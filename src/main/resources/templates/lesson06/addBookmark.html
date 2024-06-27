@@ -10,18 +10,22 @@
 </head>
 <body>
 	<div class="container">
+	
 		<h1 class="display-4 pb-3">즐겨 찾기 추가하기</h1>
-		<div class="contents">
-			<div class="pb-3">
+		
+
+			<div class="pb-3 form-group">
 				<h3>제목</h3>
 				<input type="text" id="title" class="form-control">
 			</div>
-			<div class="pb-3">
+			
+			
+			<div class="pb-3 form-group">
 				<h3>주소</h3>
 				<input type="text" id="address" class="form-control">
 			</div>
 			<input type="button" id="addBtn" value="추가" class="btn btn-success form-control">
-		</div>
+	
 	</div>
 	
 	<script>
@@ -39,10 +43,6 @@
 					return;
 				}
 
-				if (title.includes("http") == false) {
-					alert("http / https");
-					return;
-				}
 				
 				let address = $("#address").val().trim();
 				if (!address) {
@@ -50,8 +50,32 @@
 					return;
 				}
 				
+				if (address.includes("http") == false || address.includes("http") == false) {
+					alert("http / https");
+					return;
+				}
 				
+				console.log(title);
+				console.log(address);
 				
+				$.ajax({
+					// request
+					type:"post"
+					, url:"/lesson06/add-bookmark"
+					, data:{"title": title, "address":address}
+					
+					// response
+					, success: function(data) {
+						if (data == "success") {
+							location.href = "/lesson06/after-add-bookmark-view"
+						}
+					}
+					, error:function(error) {
+						alert(error);
+					}
+					
+				})
+								
 			});
 			
 		});
