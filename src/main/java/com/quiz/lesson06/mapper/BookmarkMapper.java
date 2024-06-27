@@ -11,8 +11,8 @@ import com.quiz.lesson06.domain.Bookmark;
 public interface BookmarkMapper {
 
 	public int insertBookmark(
-			@Param("title") String title,
-			@Param("address") String address);
+			@Param("name") String name,
+			@Param("url") String url);
 	
 	public List<Bookmark> selectBookmark();
 	

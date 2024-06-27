@@ -16,13 +16,18 @@
 
 			<div class="pb-3 form-group">
 				<h3>제목</h3>
-				<input type="text" id="title" class="form-control">
+				<input type="text" id="name" class="form-control">
 			</div>
 			
 			
 			<div class="pb-3 form-group">
 				<h3>주소</h3>
-				<input type="text" id="address" class="form-control">
+				<div class="d-flex">
+					<input type="text" id="url" class="form-control mr-3">
+					<input type="button" id="urlCheckBtn" class="btn btn-info" value="중복확인">
+				</div>
+				<small id="urlCheckArea"></small>
+				
 			</div>
 			<input type="button" id="addBtn" value="추가" class="btn btn-success form-control">
 	
@@ -37,36 +42,42 @@
 				
 				//validation
 				
-				let title = $("#title").val().trim();
-				if (!title) {
-					alert("title");
+				let name = $("#name").val().trim();
+				if (!name) {
+					alert("name");
 					return;
 				}
 
 				
-				let address = $("#address").val().trim();
-				if (!address) {
-					alert("address");
+				let url = $("#url").val().trim();
+				if (!url) {
+					alert("url");
 					return;
 				}
 				
-				if (address.includes("http") == false || address.includes("http") == false) {
+				// http도 아니고 https도 아니면 => alert
+				if (url.startsWith("http://") == false 
+						&& url.startsWith("https://") == false) {
 					alert("http / https");
 					return;
 				}
 				
-				console.log(title);
-				console.log(address);
+				console.log(name);
+				console.log(url);
 				
 				$.ajax({
 					// request
 					type:"post"
 					, url:"/lesson06/add-bookmark"
-					, data:{"title": title, "address":address}
+					, data:{"name": name, "url":url}
 					
 					// response
-					, success: function(data) {
-						if (data == "success") {
+					// callback 함수
+					, success: function(data) { // data: JSON String -> jquery ajax 함수가 parsing => js dictionary
+						// {"code":200, "result":"성공"}
+					
+					
+						if (data.result == "성공") {
 							location.href = "/lesson06/after-add-bookmark-view"
 						}
 					}
@@ -74,9 +85,27 @@
 						alert(error);
 					}
 					
-				})
+				});
 								
 			});
+			
+		$("#urlCheckBtn").on('click', function(){
+			
+			// alert("check")
+			$("#urlCheckArea").empty();
+			
+			
+			// validation
+			let url = $("#url").val().trim()
+			if (!url) {
+				$("#urlCheckArea").append('<span class="text-danger">url이 비어있습니다.</span>');
+				return;
+			}
+			
+			
+			
+		});
+			
 			
 		});
 	</script>

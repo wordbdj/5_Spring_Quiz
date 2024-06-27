@@ -14,9 +14,9 @@ public class BookmarkBO {
 	@Autowired
 	private BookmarkMapper bookmarkMapper;
 	
-	public void addBookmark(String title, String address) {
+	public void addBookmark(String name, String address) {
 		
-		bookmarkMapper.insertBookmark(title, address);
+		bookmarkMapper.insertBookmark(name, address);
 	}
 	
 	public List<Bookmark> getBookmark() {

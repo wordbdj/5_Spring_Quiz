@@ -13,8 +13,8 @@
  	)
  	VALUES
  	(
- 		#{title}
- 		,#{address}
+ 		#{name}
+ 		,#{url}
  		,NOW()
  		,NOW()
  	)	
@@ -22,7 +22,8 @@
  	
  	<select id="selectBookmark" resultType="com.quiz.lesson06.domain.Bookmark">
  	SELECT
- 		`name`
+ 		`id`
+ 		,`name`
 		,`url`
 	FROM
 		`bookmark`
