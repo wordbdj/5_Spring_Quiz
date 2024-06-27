@@ -25,9 +25,7 @@ public class Lesson06Controller {
 	@GetMapping("/add-bookmark-view")
 	public String addBookmarkView() {
 		
-	String in ="as";
-	in.
-		
+	
 		return "lesson06/addBookmark";
 	}
 	
