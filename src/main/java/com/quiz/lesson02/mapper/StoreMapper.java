@@ -12,6 +12,6 @@ public interface StoreMapper { // String bean 등록
 	// input: X
 	// output: (BO로 가는) List<Store>
 	
-	public List<Store> selectStore();
+	public List<Store> selectStoreList();
 	
 }

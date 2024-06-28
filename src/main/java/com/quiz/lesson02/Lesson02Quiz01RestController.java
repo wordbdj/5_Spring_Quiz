@@ -18,6 +18,6 @@ public class Lesson02Quiz01RestController { // String bean 등록
 	@RequestMapping("/lesson02/quiz01")
 	public List<Store> quiz01() {
 		
-		return storeBO.getStore();
+		return storeBO.getStoreList();
 	}
 }

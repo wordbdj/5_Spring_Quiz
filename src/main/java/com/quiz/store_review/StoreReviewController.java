@@ -26,7 +26,7 @@ public class StoreReviewController {
 	// 1. 가게 목록 화면
 	@RequestMapping("/store-list-view")
 	public String storeList(Model model) {
-		List<Store> storeList = storeBO.getStore();
+		List<Store> storeList = storeBO.getStoreList();
 		model.addAttribute("storeList", storeList);
 		
 		return "store_review/storeList";

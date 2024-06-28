@@ -11,17 +11,16 @@ import com.quiz.lesson02.mapper.StoreMapper;
 @Service
 public class StoreBO { // String bean 등록
 	
-	
-	
+
 	@Autowired
-	private StoreMapper storeMapper;
+	public StoreMapper storeMapper;
 
 	// input: X
 	// output: (RestController로 가는) List<Store>
 	
-	public List<Store> getStore() {
+	public List<Store> getStoreList() {
 		
-		return storeMapper.selectStore();
+		return storeMapper.selectStoreList();
 		
 	}
 }
