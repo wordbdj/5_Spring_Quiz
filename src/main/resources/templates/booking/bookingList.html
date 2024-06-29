@@ -80,8 +80,22 @@
 					, data:{"id": id}
 				
 					// response
-					, success:
-			})
+					, success:function(data) {
+						if (data.code == 200) {
+							// 성공
+							location.reload(true); // 새로고침
+						} else if(data.code == 500) {
+							// 로직상 실패
+							alert(data.error_message);
+						}
+					}
+					, error:function(error) {
+						alert("삭제하는데 실패했습니다.")
+					}
+					
+					});
+					
+			});
 			
 		});
 	</script>

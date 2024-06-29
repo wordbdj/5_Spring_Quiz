@@ -1,5 +1,6 @@
 package com.quiz.booking.bo;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,13 @@ public class BookingBO {
 		return bookingMapper.selectBookingList();
 	}
 	
+	public int deleteById(int id) {
+		
+		return bookingMapper.deleteBookingById(id);
+	}
+	
+	public void addBookingList(String name, int day, LocalDate date, int headcount, String phoneNumber) {
+		
+		bookingMapper.insertBookingList(name, day, date, headcount, phoneNumber);
+	}
 }
