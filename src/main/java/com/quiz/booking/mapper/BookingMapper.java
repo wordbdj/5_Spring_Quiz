@@ -23,4 +23,9 @@ public interface BookingMapper {
 			@Param("phoneNumber") String phoneNumber
 			);
 
+	public Booking selectBookingByNamePhoneNumber(
+			@Param("name") String name, 
+			@Param("phoneNumber")String phoneNumber
+			);
+
 }

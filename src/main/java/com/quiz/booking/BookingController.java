@@ -97,5 +97,42 @@ public class BookingController {
 	}
 	
 	
-	
-}
+	// AJAX 요청 -> select DB
+	@ResponseBody
+	@PostMapping("/check-booking")
+	public Map<String, Object> checkBooking(
+			@RequestParam("name") String name
+			, @RequestParam("phoneNumber") String phoneNumber) {
+		
+		// DB select 
+		Booking bookingList =  bookingBO.checkBookingByNamePhoneNumber(name, phoneNumber); 
+		
+		Map<String, Object> result = new HashMap<>();
+		if (!(bookingList == null)) {
+			result.put("code", 200);
+			result.put("result", "성공");
+//			result.put("listName", bookingList.getName());
+//			result.put("listDate", bookingList.getDate());
+//			result.put("listDay", bookingList.getDay());
+//			result.put("listHeadcount", bookingList.getHeadcount());
+//			result.put("listState", bookingList.getState());
+			
+			result.put("listResult" ,"이름:" + bookingList.getName()
+				+ '\n' + "날짜:" + bookingList.getDate() + '\n'
+				+ "일수:" + bookingList.getDay() + '\n' 
+				+ "인원:" + bookingList.getHeadcount() + '\n' 
+				+ "상태:" + bookingList.getState() + '\n');
+		} else {
+			
+			result.put("code", 500);
+			result.put("error_message", "예약 내역이 없습니다");
+		}
+			return result;
+		}
+		
+		
+		
+	}
+
+
+

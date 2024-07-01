@@ -83,6 +83,7 @@
 					, success:function(data) {
 						if (data.code == 200) {
 							// 성공
+							alert("삭제되었습니다.")
 							location.reload(true); // 새로고침
 						} else if(data.code == 500) {
 							// 로직상 실패

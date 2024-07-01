@@ -29,4 +29,11 @@ public class BookingBO {
 		
 		bookingMapper.insertBookingList(name, day, date, headcount, phoneNumber);
 	}
+
+	public Booking checkBookingByNamePhoneNumber(String name, String phoneNumber) {
+		
+		return bookingMapper.selectBookingByNamePhoneNumber(name, phoneNumber);
+		// TODO Auto-generated method stub
+		
+	}
 }
