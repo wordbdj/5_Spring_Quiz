@@ -2,6 +2,9 @@ package com.quiz.lesson02.domain;
 
 import java.time.LocalDateTime;
 
+import lombok.Data;
+
+@Data
 public class Store {
 
 	private int id;

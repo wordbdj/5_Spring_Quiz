@@ -23,7 +23,7 @@ public interface BookingMapper {
 			@Param("phoneNumber") String phoneNumber
 			);
 
-	public Booking selectBookingByNamePhoneNumber(
+	public List<Booking> selectBookingByNamePhoneNumber(
 			@Param("name") String name, 
 			@Param("phoneNumber")String phoneNumber
 			);

@@ -105,23 +105,28 @@ public class BookingController {
 			, @RequestParam("phoneNumber") String phoneNumber) {
 		
 		// DB select 
-		Booking bookingList =  bookingBO.checkBookingByNamePhoneNumber(name, phoneNumber); 
+		Booking booking =  bookingBO.getLatestBookingByNamePhoneNumber(name, phoneNumber); 
+		
+		
+		// 응답값 => JSON
+		// {"code" : 200, "result":booking 객체}
+		// {"code" : 200, "result":{"id":3, "name":"신보람"......}}
 		
 		Map<String, Object> result = new HashMap<>();
-		if (!(bookingList == null)) {
+		if (!(booking == null)) {
 			result.put("code", 200);
-			result.put("result", "성공");
+			result.put("result", booking);
 //			result.put("listName", bookingList.getName());
 //			result.put("listDate", bookingList.getDate());
 //			result.put("listDay", bookingList.getDay());
 //			result.put("listHeadcount", bookingList.getHeadcount());
 //			result.put("listState", bookingList.getState());
 			
-			result.put("listResult" ,"이름:" + bookingList.getName()
-				+ '\n' + "날짜:" + bookingList.getDate() + '\n'
-				+ "일수:" + bookingList.getDay() + '\n' 
-				+ "인원:" + bookingList.getHeadcount() + '\n' 
-				+ "상태:" + bookingList.getState() + '\n');
+			result.put("listResult" ,"이름:" + booking.getName()
+				+ '\n' + "날짜:" + booking.getDate() + '\n'
+				+ "일수:" + booking.getDay() + '\n' 
+				+ "인원:" + booking.getHeadcount() + '\n' 
+				+ "상태:" + booking.getState() + '\n');
 		} else {
 			
 			result.put("code", 500);
